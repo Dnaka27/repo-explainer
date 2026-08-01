@@ -84,3 +84,22 @@ Abra `http://localhost:5173`, cole a URL de um repositório público (ex:
 cd backend
 .venv/Scripts/python -m pytest
 ```
+
+## Deploy
+
+- **Frontend (Vercel)**: `https://repo-explainer-weld.vercel.app`. Deployado a partir da
+  pasta `frontend/` (`vercel --prod` de dentro dela). A env var `VITE_API_BASE_URL` no
+  projeto Vercel aponta para a URL do backend abaixo.
+- **Backend (Render)**: configurado via `render.yaml` na raiz (Blueprint). Passos manuais
+  únicos no dashboard do Render (não automatizáveis por CLI, exigem login/OAuth):
+  1. [render.com](https://render.com) → **New +** → **Blueprint** → conecte o repositório
+     `repo-explainer` no GitHub.
+  2. Render detecta o `render.yaml` e cria o serviço `repo-explainer-api` automaticamente.
+  3. Preencha os secrets pedidos no dashboard: `GEMINI_API_KEY` e `GITHUB_TOKEN` (os
+     outros valores já vêm do `render.yaml`).
+  4. Depois do primeiro deploy, confira se a URL gerada bate com
+     `https://repo-explainer-api.onrender.com` — se o nome tiver sido alterado, atualize
+     `VITE_API_BASE_URL` no projeto Vercel (`vercel env`) e o `CORS_ORIGINS` no Render.
+
+> Plano free do Render "dorme" após inatividade — a primeira requisição depois de um
+> tempo pode demorar ~30-60s pra acordar o serviço.
