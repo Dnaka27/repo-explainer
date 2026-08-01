@@ -1,0 +1,138 @@
+:root {
+  --sky: #edeff7;
+  --sky-raised: #f7f8fc;
+  --ink: #1c1f3d;
+  --ink-dim: #5b6089;
+  --ink-faint: rgba(28, 31, 61, 0.5);
+  --gold: #9c6f1b;
+  --gold-soft: rgba(156, 111, 27, 0.1);
+  --gold-border: rgba(156, 111, 27, 0.4);
+  --line: rgba(28, 31, 61, 0.09);
+  --danger: #c0392b;
+  --danger-soft: rgba(192, 57, 43, 0.08);
+  --code-bg: rgba(28, 31, 61, 0.06);
+  --shadow: rgba(28, 31, 61, 0.16) 0 16px 32px -16px;
+
+  --display: 'Fraunces', Georgia, serif;
+  --sans: 'Work Sans', system-ui, sans-serif;
+  --mono: 'Space Mono', ui-monospace, Consolas, monospace;
+
+  font: 17px/1.6 var(--sans);
+  color-scheme: light dark;
+  color: var(--ink-dim);
+  background: var(--sky);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 720px) {
+    font-size: 15.5px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --sky: #0e1128;
+    --sky-raised: #171b3d;
+    --ink: #f3eee0;
+    --ink-dim: #8d93b8;
+    --ink-faint: rgba(243, 238, 224, 0.5);
+    --gold: #d9a441;
+    --gold-soft: rgba(217, 164, 65, 0.14);
+    --gold-border: rgba(217, 164, 65, 0.4);
+    --line: rgba(243, 238, 224, 0.09);
+    --danger: #e8735a;
+    --danger-soft: rgba(232, 115, 90, 0.12);
+    --code-bg: rgba(243, 238, 224, 0.07);
+    --shadow: rgba(0, 0, 0, 0.4) 0 16px 32px -16px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-image:
+    radial-gradient(1px 1px at 8% 22%, var(--line) 100%, transparent),
+    radial-gradient(1px 1px at 24% 68%, var(--line) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 42% 12%, var(--line) 100%, transparent),
+    radial-gradient(1px 1px at 61% 84%, var(--line) 100%, transparent),
+    radial-gradient(1px 1px at 78% 38%, var(--line) 100%, transparent),
+    radial-gradient(1.5px 1.5px at 91% 65%, var(--line) 100%, transparent),
+    radial-gradient(1px 1px at 15% 92%, var(--line) 100%, transparent),
+    radial-gradient(1px 1px at 88% 8%, var(--line) 100%, transparent);
+  background-size: 560px 560px;
+  background-repeat: repeat;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+::selection {
+  background: var(--gold-soft);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--ink);
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.eyebrow::before {
+  content: '✦';
+  font-size: 11px;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.88em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
